@@ -1,0 +1,191 @@
+body {
+    font-family: 'Lucida Sans', Verdana, sans-serif;
+    background-color: #6097ce;
+    color: white;
+    text-align: center;
+}
+
+section {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#shadow-overlap {
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background-color: rgba(1, 1, 1, .75);
+    z-index: 10;
+}
+
+.block-gallery {
+    width: 630px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 210px);
+    justify-content: center;
+}
+
+.gallery-image {
+    height: 150px;
+    width: 200px;
+    overflow: hidden;
+    margin: 5px;
+    cursor: pointer;
+    background: #000;
+    position: relative;
+}
+
+
+.gallery-image img {
+    height: 150px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.on-mouseover-image {
+    transform: scale3d(1.1, 1.1, 1.1);
+    opacity: 0.7;
+}
+
+.big-image {
+    position: fixed;
+    height: auto;
+    width: 50vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 15;
+}
+
+.big-image img {
+    height: auto;
+    width: 100%;
+}
+
+.opacity {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.magnifier {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+}
+
+.button-arrow-left {
+    width: 55px;
+    height: 55px;
+    background-size: contain;
+    background-image: url('image/left-arrow.png');
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    opacity: 0.8;
+}
+
+.button-arrow-right {
+    width: 55px;
+    height: 55px;
+    background-size: contain;
+    background-image: url('image/right-arrow.png');
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    opacity: 0.8;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+}
+
+.wrapper-button-arrow-left {
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 16;
+    cursor: pointer;
+}
+
+.wrapper-button-arrow-right {
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 16;
+    cursor: pointer;
+}
+
+.count-number-image {
+    width: 100%;
+    position: absolute;
+    bottom: 3px; left: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(1, 1, 1, .7);
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.form {
+    padding: 10px;
+    background: #124f90;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+#sendImage {
+    border-left: 1px solid;
+    cursor: pointer;
+}
+
+@media all and (max-width: 1280px){
+    .big-image {
+        width: 65vw;
+    }
+}
+
+@media all and (max-width: 780px){
+    .big-image {
+        width: 75vw;
+    }
+
+    .count-number-image {
+        font-size: 14px;
+    }
+
+    .button-arrow-left, .button-arrow-right {
+        height: 35px;
+        width: 35px;
+    }
+
+}
+
+@media all and (max-width: 460px){
+    .big-image {
+        width: 85vw;
+    }
+
+    .count-number-image {
+        font-size: 10px;
+    }
+
+    .button-arrow-left, .button-arrow-right {
+        height: 20px;
+        width: 20px;
+    }
+}
