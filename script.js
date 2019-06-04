@@ -21,14 +21,64 @@ const addImageGallery = () => {
 addImageGallery();
 
 
+// const loadFile = url => {
+//     return new Promise((resolve, reject) => {
+//         const xhr = new XMLHttpRequest();
+//         xhr.responseType = 'blob';
+
+//         xhr.onreadystatechange = () => {
+//             if (xhr.readyState === XMLHttpRequest.DONE) {
+                
+//                 xhr.addEventListener('load', () => {
+//                     resolve();
+//                 });
+
+
+//                 xhr.addEventListener('error', () => {
+//                     reject();
+//                 });
+//             }
+//         }
+
+//         xhr.open('GET', url);
+//         xhr.send();
+//     });
+// }
+
+const loadFile = async url => {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        arrayImage.push(url);
+        addImageGallery();
+        let startFancyBox = wrapperFancyBox();
+        startFancyBox();
+      }
+    } catch (e) {
+        alert('Image not found');
+    }
+  }
+
+
 //Add new image
 document.querySelector('#sendImage').onclick = () => {
-    const urlImage = document.querySelector('#addImage').value;
-    arrayImage.push(urlImage);
-    addImageGallery();
 
-    let startFancyBox = wrapperFancyBox();
-    startFancyBox();
+    const urlImage = document.querySelector('#addImage').value;
+
+    loadFile(urlImage);
+
+    // loadFile(urlImage)
+    //     .then(() => {
+    //         arrayImage.push(urlImage);
+    //     })
+    //     .then(() => {
+    //         addImageGallery();
+    //         let startFancyBox = wrapperFancyBox();
+    //         startFancyBox();
+    //     })
+    //     .catch(() => {
+    //         alert('Image not found');
+    //     })
 }
 
 
